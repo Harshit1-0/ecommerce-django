@@ -6,9 +6,10 @@ from django.views.generic import DetailView
 def productList(request) :
     products = Products.objects.all()
     print(products)
-    return render(request ,store/productList.html , {'product' : products} )
+    return render(request ,'store/productList.html' , {'products' : products} )
 
 class ProductDetail(DetailView) :
-    model = Product 
+    model = Products 
     context_object_name = 'product' 
-    template_name = 'product_detail.html'
+    template_name = 'store/product_detail.html'
+

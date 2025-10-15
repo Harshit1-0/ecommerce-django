@@ -7,7 +7,7 @@ class Category(models.Model) :
     name = models.CharField(max_length=50)
     slug = models.SlugField(unique = True)
     def __str__(self) :
-        return self.name 
+        return f"{self.id} {self.name}" 
 class Products(models.Model) :
     category = models.ForeignKey(Category, on_delete=models.CASCADE , related_name = 'products')
     name = models.CharField(max_length=250)
@@ -18,7 +18,9 @@ class Products(models.Model) :
     stock = models.PositiveIntegerField()
     
     def __str__(self):
-        return self.name
+        category_name = self.category.name if self.category else "Uncategorized"
+        return f"{self.name} | {category_name} | {self.image} | {self.price:.2f}"
+
 
 
 class Customer(models.Model):
