@@ -2,22 +2,85 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+  <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title></title>
-    <meta name="description" content="" />
+    <title>Product Detail - Football</title>
+    <meta name="description" content="Product detail page for Football" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="" />
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .heading h1 {
+        color: #333;
+        margin-bottom: 30px;
+      }
+
+      .image {
+        border: 2px solid #ccc;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      }
+
+      .image img {
+        max-width: 300px;
+        width: 100%;
+        height: auto;
+        margin-bottom: 15px;
+      }
+
+      .image p {
+        font-size: 18px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #555;
+      }
+
+      .image a {
+        text-decoration: none;
+        color: #fff;
+        background-color: #007bff;
+        padding: 10px 20px;
+        border-radius: 4px;
+        transition: background-color 0.3s ease;
+      }
+
+      .image a:hover {
+        background-color: #0056b3;
+      }
+    </style>
   </head>
   <body>
-    <h1>This product Detail of {{product.name}}</h1>
-    <img src="{{product.image.url}}" />
-    <p>{{product.price}}</p>
-    <a href="{%url 'productList'%}">Back</a>
-
-    <script src="" async defer></script>
+    <div class="container">
+      <div class="heading">
+        <h1>This product Detail of {{product.name}}</h1>
+      </div>
+      <div class="image">
+        <img src="{{product.image.url}}" alt="Football image" />
+        <p>${{product.price}}</p>
+        <a href="{% url 'productList' %}">Back</a>
+      </div>
+    </div>
   </body>
 </html>
