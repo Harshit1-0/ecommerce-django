@@ -2,6 +2,8 @@ from django.shortcuts import render
 from .models import Products , Category
 from django.shortcuts import get_object_or_404, redirect
 from django.views.generic import DetailView , ListView
+from .cart import Cart
+
 # Create your views here.
 def productList(request) :
     products = Products.objects.all()
@@ -36,4 +38,36 @@ class ProductListByCategory(ListView):
     template_name = 'store/productList.html'
 
 
+def addToCart(request , pk) :
+    inst = Cart(request)
+    product = Products.objects.get(pk =pk)
 
+    inst.add(pk , product)
+    return redirect('productList')
+
+def cart(request):
+    cart = request.session.get('cart', {})
+    product_ids = cart.keys()
+
+    products = Products.objects.filter(id__in=product_ids)
+    print(products)
+
+    cart_items = []
+
+    for product in products:
+        pid = str(product.id)
+        quantity = cart[pid]['quantity']
+        cart_items.append({
+            'product': product,
+            'quantity': quantity,
+            'total_price': product.price * quantity
+        })
+    total = 0
+    for item in cart_items:
+        total += item['total_price']
+    context = {
+        'cart_items': cart_items,
+        'cart_total': total
+    }
+
+    return render(request, 'store/cart.html', context)

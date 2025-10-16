@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Our Products</title>
 
-    <!-- Bootstrap CSS (only for buttons & utilities) -->
+    <!-- Bootstrap CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
       rel="stylesheet"
@@ -14,193 +14,258 @@
 
     <style>
       body {
-        background-color: #f8f9fa;
+        background-color: #f4f6f8;
         margin: 0;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-          Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+        font-family: "Segoe UI", Roboto, sans-serif;
       }
 
       .container {
         max-width: 1200px;
-        margin: 40px auto;
-        display: flex;
-        gap: 30px;
+        margin: 50px auto;
         padding: 0 15px;
       }
 
-      /* Sidebar */
-      .category {
-        flex: 0 0 25%;
-        background: white;
-        padding: 20px;
-        border-radius: 8px;
-        box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
-        height: fit-content;
+      /* Header */
+      .header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 30px;
       }
 
-      .category p {
-        margin: 10px 0;
-        cursor: pointer;
-        padding: 8px 12px;
-        border-radius: 4px;
-        transition: background-color 0.3s;
+      .header a {
+        text-decoration: none;
+        font-weight: 600;
+        color: #fff;
+        padding: 10px 18px;
+        background-color: #0d6efd;
+        border-radius: 6px;
+        transition: all 0.3s ease;
       }
 
-      .category p:hover {
-        background-color: #007bff;
-        color: white;
+      .header a:hover {
+        background-color: #084298;
+        color: #fff;
       }
 
-      /* Products container */
+      /* Main Layout */
+      .main-container {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+      }
+
+      /* Optional: place inside <style> tag or a CSS file */
+      .dropdown {
+        flex-shrink: 0;
+      }
+
+      .dropdown .btn {
+        font-weight: 500;
+        border-radius: 6px;
+      }
+
+      .dropdown-menu {
+        border: 1px solid #0d6efd;
+        padding: 0;
+        overflow: hidden;
+      }
+
+      .dropdown-menu a.dropdown-item {
+        padding: 10px 16px;
+        text-decoration: none;
+        transition: background 0.2s ease, color 0.2s ease;
+        font-size: 15px;
+      }
+
+      .dropdown-menu a.dropdown-item:hover {
+        background-color: #0d6efd;
+        color: #fff;
+      }
+
+      /* Products Section */
       .products {
-        flex: 1;
         display: flex;
         flex-wrap: wrap;
         gap: 25px;
+        flex: 1;
       }
 
-      /* Each product card */
       .product-card {
         background: white;
-        border-radius: 10px;
-        box-shadow: 0 4px 10px rgb(0 0 0 / 0.1);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
         overflow: hidden;
-        width: calc(33.333% - 16.666px); /* 3 cards per row with gap */
+        width: calc(33.333% - 17px);
         display: flex;
         flex-direction: column;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .product-card:hover {
-        transform: translateY(-5px);
+        transform: translateY(-6px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
       }
 
-      /* Product image */
       .product-img {
         width: 100%;
-        height: 180px;
+        height: 220px;
         object-fit: cover;
       }
 
-      /* Card body */
       .card-body {
-        padding: 15px;
-        flex-grow: 1;
+        padding: 18px;
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        flex-grow: 1;
       }
 
       .card-title {
+        font-size: 1.2rem;
         font-weight: 600;
-        margin-bottom: 10px;
-        font-size: 1.1rem;
+        color: #333;
+        margin-bottom: 8px;
       }
 
       .card-text {
-        color: #6c757d;
-        font-weight: 500;
-        margin-bottom: 15px;
         font-size: 1rem;
+        color: #555;
+        margin-bottom: 16px;
       }
-      li {
-        cursor: pointer;
+
+      .button {
+        display: flex;
+        gap: 10px;
+        margin-top: auto;
       }
-      li:hover {
-        background-color: #007bff;
+
+      .button a {
+        flex: 1;
+      }
+
+      .btn-outline-primary {
+        border-color: #0d6efd;
+        color: #0d6efd;
+      }
+
+      .btn-outline-primary:hover {
+        background-color: #0d6efd;
         color: white;
       }
 
-      /* Responsive */
       @media (max-width: 992px) {
         .product-card {
-          width: calc(50% - 12.5px); /* 2 cards per row */
-        }
-
-        .category {
-          flex: 0 0 30%;
+          width: calc(50% - 12.5px);
         }
       }
 
       @media (max-width: 600px) {
-        .container {
+        .main-container {
           flex-direction: column;
-          padding: 0 10px;
-        }
-
-        .category {
-          flex: none;
-          width: 100%;
-          margin-bottom: 30px;
-        }
-
-        .products {
-          justify-content: center;
         }
 
         .product-card {
           width: 100%;
         }
-        li {
-          pointer: cursor;
+
+        .header {
+          justify-content: center;
+        }
+
+        .dropdown {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 20px;
         }
       }
     </style>
   </head>
+
   <body>
     <div class="container">
-      <!-- Category Sidebar -->
-      <div class="dropdown mb-4">
-        <button
-          class="btn btn-primary dropdown-toggle"
-          type="button"
-          id="categoryDropdown"
-          data-bs-toggle="dropdown"
-          aria-expanded="false"
-        >
-          Categories
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="categoryDropdown">
-          <a href = {%url 'productList'%}><li>All</li></a>
-          {% for item in cat %}
-          <a href={%url 'productByCat' slug=item.slug%}><li>{{ item.name }}</li></a>
-          {% endfor %}
-        </ul>
+      <!-- Header -->
+      <div class="header">
+        <a href="{% url 'cart' %}">🛒 View Cart</a>
       </div>
 
-      <!-- Products Section -->
-      <section class="products">
-        {% for product in products %}
-        <div class="product-card">
-          {% if product.image %}
-          <img
-            src="{{ product.image.url }}"
-            alt="{{ product.name }}"
-            class="product-img"
-          />
-          {% else %}
-          <img
-            src="https://via.placeholder.com/300x200?text=No+Image"
-            alt="No image"
-            class="product-img"
-          />
-          {% endif %}
-
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">${{ product.price }}</p>
-            <a href="{% url 'detailView' product.id %}" class="btn btn-primary"
-              >View Details</a
-            >
-          </div>
+      <!-- Main Content -->
+      <div class="main-container">
+        <!-- Dropdown Categories -->
+        <div class="dropdown">
+          <button
+            class="btn btn-outline-primary dropdown-toggle px-4 py-2"
+            type="button"
+            id="categoryDropdown"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            Categories
+          </button>
+          <ul
+            class="dropdown-menu shadow-sm border-1"
+            aria-labelledby="categoryDropdown"
+          >
+            <li>
+              <a class="dropdown-item" href="{% url 'productList' %}">All</a>
+            </li>
+            {% for item in cat %}
+            <li>
+              <a
+                class="dropdown-item"
+                href="{% url 'productByCat' slug=item.slug %}"
+              >
+                {{ item.name }}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
         </div>
-        {% empty %}
-        <p>No products available.</p>
-        {% endfor %}
-      </section>
+
+        <!-- Product Cards -->
+        <section class="products">
+          {% for product in products %}
+          <div class="product-card">
+            {% if product.image %}
+            <img
+              src="{{ product.image.url }}"
+              alt="{{ product.name }}"
+              class="product-img"
+            />
+            {% else %}
+            <img
+              src="https://via.placeholder.com/300x200?text=No+Image"
+              alt="No image"
+              class="product-img"
+            />
+            {% endif %}
+
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text">${{ product.price }}</p>
+              <div class="button">
+                <a
+                  href="{% url 'detailView' product.id %}"
+                  class="btn btn-outline-primary"
+                >
+                  Details
+                </a>
+                <a
+                  href="{% url 'addToCart' product.id %}"
+                  class="btn btn-outline-warning"
+                >
+                  Add to Cart
+                </a>
+              </div>
+            </div>
+          </div>
+          {% empty %}
+          <p>No products available.</p>
+          {% endfor %}
+        </section>
+      </div>
     </div>
 
-    <!-- Bootstrap JS (optional) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   </body>
 </html>

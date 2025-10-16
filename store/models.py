@@ -19,7 +19,7 @@ class Products(models.Model) :
     
     def __str__(self):
         category_name = self.category.name if self.category else "Uncategorized"
-        return f"{self.name} | {category_name} | {self.image} | {self.price:.2f}"
+        return f"{self.id} | {self.name} | {category_name} | {self.image} | {self.price:.2f}"
 
 
 
